@@ -24,6 +24,7 @@ function App() {
             <input type="text" placeholder="Haku" ref={inputRef} />
             <button onClick={() => setHaku(inputRef.current.value)}>Hae</button>
             {data?.[0]?.title && <h1>{data[0].title}</h1>}
+            {data?.[0]?.thumbnail?.source && <img src={data?.[0]?.thumbnail?.source} />}
             {data?.[0]?.extract && <p>{data[0].extract}</p>}
         </div>
     );
