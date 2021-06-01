@@ -1,12 +1,13 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import axios from "axios";
 
 import "./App.css";
 
 function App() {
     const [data, setData] = useState();
-    const [hakuTemp, setHakuTemp] = useState();
     const [haku, setHaku] = useState();
+    const inputRef = useRef(null);
+
     useEffect(() => {
         axios
             .get(`http://localhost:4000/wiki?haku=${haku}`)
@@ -20,8 +21,8 @@ function App() {
     console.log({ haku });
     return (
         <div className="App">
-            <input type="text" placeholder="Haku" onChange={(event) => setHakuTemp(event.target.value)} />
-            <button onClick={() => setHaku(hakuTemp)}>Hae</button>
+            <input type="text" placeholder="Haku" ref={inputRef} />
+            <button onClick={() => setHaku(inputRef.current.value)}>Hae</button>
             {data?.[0]?.title && <h1>{data[0].title}</h1>}
             {data?.[0]?.extract && <p>{data[0].extract}</p>}
         </div>
