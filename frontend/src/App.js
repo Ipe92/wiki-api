@@ -18,7 +18,8 @@ function App() {
                 console.log(error);
             });
     }, [haku]);
-    console.log({ haku });
+    console.log({ data });
+
     return (
         <div className="App">
             <input type="text" placeholder="Haku" ref={inputRef} />
